@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: bt-cargo-ledger
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    envVars:
+      - key: PORT
+        value: "3005"
+      - key: NODE_ENV
+        value: production
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: BLOCKCHAIN_ENABLED
+        value: "false"
+      - key: POLYGON_RPC_URL
+        sync: false
+      - key: LEDGER_WALLET_PRIVATE_KEY
+        sync: false
+      - key: LEDGER_CONTRACT_ADDRESS
+        sync: false
+    healthCheckPath: /health
